@@ -2,13 +2,15 @@ package com.pw.DTO;
 
 public class ContactDTO {
     private String name;
-    private int number;
+    private String number;
     private String mail;
 
-    public ContactDTO(String name, int number, String mail) {
+    public ContactDTO() {}
+
+    public ContactDTO(String name, String number, String mail) {
         this.name = name;
         this.number = number;
-        this.mail = mail;
+        this.mail = mail.isBlank() ? "No email" : mail;
     }
 
     public String getName() {
@@ -19,11 +21,11 @@ public class ContactDTO {
         this.name = name;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

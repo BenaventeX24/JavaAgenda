@@ -5,6 +5,8 @@ public class Contact {
     private int number;
     private String mail;
 
+    public Contact(){}
+
     public Contact(String name, int number, String mail){
         this.name = name;
         this.number =number;

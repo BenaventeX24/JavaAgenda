@@ -1,26 +1,29 @@
 package com.pw.api;
 
 import com.pw.DTO.ContactDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import com.pw.logic.Contact;
+import com.pw.persistance.DBController;
 
-@CrossOrigin
-@Controller
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class RegisterUserAPI {
 
-    @Autowired
-    public JdbcTemplate db;
+    @PostMapping("/agenda")
+    public HttpStatus registrar(@RequestBody ContactDTO contact){
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ContactDTO registrar(@RequestBody ContactDTO contact){
-        String statement = "INSERT INTO PHONEBOOK(nameR, number, mail) VALUES('" + contact.getName() + "'," + contact.getNumber() + ",'" + contact.getMail() + "')";
-        db.update(statement);
-
-        System.out.println("hey");
-        return contact;
-
-        }
+        return DBController.register(contact.getName(),Integer.parseInt(contact.getNumber()),contact.getMail());
     }
+
+    @GetMapping("/agenda")
+    public Contact search(@RequestHeader("name") String name){
+         
+        return DBController.search(name);
+    }
+}
 
