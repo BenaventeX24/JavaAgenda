@@ -1,7 +1,5 @@
 package com.pw.api;
 
-import javax.annotation.Resource;
-
 import com.pw.DTO.ContactDTO;
 import com.pw.logic.Contact;
 import com.pw.persistance.DBController;
@@ -23,9 +21,9 @@ public class RegisterUserAPI {
     @PostMapping("/agenda")
     public HttpStatus registrar(@RequestBody ContactDTO contact){
 
-        if(resource.validateEmail(contact.getMail()){
+        if(resource.validateEmail(contact.getMail())){
             return DB.register(contact.getName(),Integer.parseInt(contact.getNumber()),contact.getMail());
-        }
+        }else return HttpStatus.BAD_REQUEST;
     }
 
     @GetMapping("/agenda")
