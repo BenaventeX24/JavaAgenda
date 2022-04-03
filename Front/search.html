@@ -11,16 +11,16 @@
     <form>
         <div id="box">
             <h1>Phonebook</h1>
-            <h2 id="subtitle">Build your dreams</h2>
+            <h2 id="subtitle">Search a contact</h2>
             <div class="input-container ">
-                <button class="options" type="button" onclick="window.open('register.html','_self')">Register a contact</button>
-                <button class="options" type="button" onclick="window.open('search.html','_self')">Search for a contact</button>
+                <input id="name" class="input" type="text" placeholder="Enter the name" />
+                <button id="submit" type="submit">Submit</button>
+                <button id="menu" type="button" onclick="window.open('index.html','_top')">Menu</button>
             </div>
         </div>
     </form>
+        <div id="response">
+        </div>
 </body>
 </html>
-
-<script>
-
-</script>
+<script src="./script.js"></script>
