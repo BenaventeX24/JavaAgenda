@@ -7,12 +7,12 @@ function retrieveDataRegister(){
   data.name = name;
   data.number = number;
   data.mail = mail;
-
+  
   register(data);
 }
 
 async function register(data) {
-  return await fetch("http://localhost:8080/register", {
+  return await fetch("http://localhost:8080/agenda", {
     method: "POST",
     mode: "cors",
     headers: {
@@ -29,8 +29,14 @@ async function register(data) {
   });
 }
 
+function retrieveDataSearch(){
+  var nameS = document.getElementById('nameSearch').value;
+
+  search(nameS);
+}
+
 async function search(name) {
-  return await fetch("http:localhost:8080/search?name=" + name, {
+  return await fetch("http:localhost:8080/agenda?name=" + name, {
     method: "GET",
     mode: "cors",
     headers: {
@@ -39,7 +45,7 @@ async function search(name) {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data == "") {
+      if (data.name == undefined) {
         document.getElementById("response").innerHTML = `
                 <div id="responseBox">
                 <h1>Contact not found</h1>

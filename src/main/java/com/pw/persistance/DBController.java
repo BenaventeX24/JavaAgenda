@@ -25,6 +25,7 @@ public void setDB(JdbcTemplate db) {
 
     public HttpStatus register(String name, int number, String mail){
         try {
+            System.out.println(name+" "+number);
             String statement = "INSERT INTO PHONEBOOK(nameR, num, mail) VALUES('" + name + "'," + number + ",'" + mail + "')";
             db.update(statement);
             return HttpStatus.OK;

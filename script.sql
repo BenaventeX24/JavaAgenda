@@ -11,7 +11,9 @@ primary key(num)
 );
 
 use agenda;
-select * from PHONEBOOK ;
+select * from PHONEBOOK;
 
+/*
 CREATE USER 'root'@'localhost' IDENTIFIED BY 'password'; 
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
+*/
