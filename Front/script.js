@@ -19,11 +19,24 @@ async function register(data) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data)
-  }).then(function (response) {
-    if (response.ok) {
+  }).then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    if (data == 'O') {
       document.getElementById("response").innerHTML = `
                 <div id="responseBox">
                 <h1>Contact registered</h1>
+                </div>`;
+    }else if(data == 'U'){
+      document.getElementById("response").innerHTML = `
+                <div id="responseErrorBox">
+                <h1>Mail not valid</h1>
+                </div>`;
+    }
+    else if(data == 'C'){
+      document.getElementById("response").innerHTML = `
+                <div id="responseErrorBox">
+                <h1>That number has already been registered</h1>
                 </div>`;
     }
   });

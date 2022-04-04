@@ -76,7 +76,7 @@
     background-color: #122840;
   }
 
-    #box, #responseBox{
+    #box, #responseBox, #responseErrorBox{
     color: #FFF;
     display: grid;
     place-items: center;
@@ -89,8 +89,12 @@
     margin-top: 50%;
   }
 
-  #responseBox {
+  #responseBox, #responseErrorBox{
     margin-top: 1.5em;
+  }
+
+  #responseErrorBox{
+    background-color: #8d152f;
   }
 
   .responseInfo{

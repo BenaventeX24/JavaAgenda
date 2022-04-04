@@ -18,7 +18,6 @@ public class resource {
         if (counterArroba == 1 && counterPunto > 0) {
             return true;
         }else{
-            System.out.println("Dale loco");
             return false;}
     }
 

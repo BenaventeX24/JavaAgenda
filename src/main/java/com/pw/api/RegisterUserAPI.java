@@ -21,14 +21,11 @@ public class RegisterUserAPI {
     private DBController DB;
 
     @PostMapping("/agenda")
-    public HttpStatus registrar(@RequestBody ContactDTO contact){
-
-        System.out.println("AHHHHHHHHHHHHHHHHHHHHHHHHHH");
+    public char registrar(@RequestBody ContactDTO contact){
 
         if(resource.validateEmail(contact.getMail())){
-            System.out.println("22222222222222222222222222222222222");
             return DB.register(contact.getName(),Integer.parseInt(contact.getNumber()),contact.getMail());
-        }else return HttpStatus.BAD_REQUEST;
+        }else return 'U';
     }
 
     @GetMapping("/agenda")
