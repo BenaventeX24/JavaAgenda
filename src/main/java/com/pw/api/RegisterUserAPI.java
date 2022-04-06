@@ -1,6 +1,7 @@
 package com.pw.api;
 
 import com.pw.DTO.ContactDTO;
+import com.pw.DTO.RegisterResponseDTO;
 import com.pw.logic.Contact;
 import com.pw.persistance.DBController;
 
@@ -21,11 +22,14 @@ public class RegisterUserAPI {
     private DBController DB;
 
     @PostMapping("/agenda")
-    public char registrar(@RequestBody ContactDTO contact){
+    public RegisterResponseDTO registrar(@RequestBody ContactDTO contact){
 
         if(resource.validateEmail(contact.getMail())){
             return DB.register(contact.getName(),Integer.parseInt(contact.getNumber()),contact.getMail());
-        }else return 'U';
+        }else {
+            RegisterResponseDTO error = new RegisterResponseDTO("Contact not registered", "The entered email is not valid");
+            return error;
+        }
     }
 
     @GetMapping("/agenda")
